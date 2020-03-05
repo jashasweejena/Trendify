@@ -15,24 +15,24 @@ import com.example.trendify.models.Repositories;
 
 import java.util.List;
 
-public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder> {
+public class RepoRecyclerviewAdapter extends RecyclerView.Adapter<RepoRecyclerviewAdapter.ViewHolder> {
 
     private List<Repositories> mRepositories;
     private Context mContext;
 
-    public RecyclerviewAdapter(List<Repositories> mRepositories, Context mContext) {
+    public RepoRecyclerviewAdapter(List<Repositories> mRepositories, Context mContext) {
         this.mRepositories = mRepositories;
         this.mContext = mContext;
     }
 
-    public RecyclerviewAdapter() {
+    public RepoRecyclerviewAdapter() {
     }
 
     @NonNull
     @Override
-    public RecyclerviewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RepoRecyclerviewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_repositories, parent, false);
-        RecyclerviewAdapter.ViewHolder vh = new ViewHolder(view);
+        RepoRecyclerviewAdapter.ViewHolder vh = new ViewHolder(view);
         return vh;
     }
 

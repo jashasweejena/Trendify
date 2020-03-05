@@ -9,7 +9,7 @@ import com.example.trendify.repositories.RepoRepository;
 
 import java.util.List;
 
-public class RepositoriesViewModel extends ViewModel {
+public class RepoViewModel extends ViewModel {
     private MutableLiveData<List<Repositories>> mRespositories;
     private RepoRepository repoRepo;
 

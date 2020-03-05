@@ -1,66 +1,65 @@
 package com.example.trendify;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.trendify.adapters.RecyclerviewAdapter;
-import com.example.trendify.models.Repositories;
-import com.example.trendify.viewmodels.RepositoriesViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.util.List;
+import com.example.trendify.fragments.DevelopersFragment;
+import com.example.trendify.fragments.RepoFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = this.getClass().getSimpleName();
 
-    private FloatingActionButton mFab;
-    private RecyclerView mRecyclerView;
+    private BottomNavigationView bottomNavigationView;
     private ProgressBar mProgressBar;
-    private RecyclerviewAdapter mAdapter;
-    private RepositoriesViewModel mRepositoriesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mFab = findViewById(R.id.fab);
-        mRecyclerView = findViewById(R.id.recyclerview);
-        mProgressBar = findViewById(R.id.progress_bar);
-        mRepositoriesViewModel = ViewModelProviders.of(this).get(RepositoriesViewModel.class);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        mRepositoriesViewModel.init();
+        BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.developers_menu:
+                                openFragment(DevelopersFragment.getInstance());
+                                return true;
+                            case R.id.repositories_menu:
+                                openFragment(RepoFragment.getInstance());
+                                return true;
+                        }
+                        return false;
+                    }
+                };
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        mRepositoriesViewModel.getRepositories().observe(this, new Observer<List<Repositories>>() {
-            @Override
-            public void onChanged(List<Repositories> repositoriesModels) {
-                mAdapter = new RecyclerviewAdapter(repositoriesModels, MainActivity.this);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-        });
-
-        initRecyclerViewState();
     }
 
-    private void initRecyclerViewState() {
-        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-    }
-
-    private void showProgressBar(){
+    private void showProgressBar() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
-    private void hideProgressBar(){
+    private void hideProgressBar() {
         mProgressBar.setVisibility(View.INVISIBLE);
     }
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }
