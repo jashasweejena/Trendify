@@ -13,6 +13,7 @@ public class DevViewModel extends ViewModel {
     private MutableLiveData<List<Developers>> mDevelopers;
     private DevRepository devRepo;
 
+    //Initialize the viewmodel
     public void init() {
         if (mDevelopers != null) {
             return;
@@ -22,6 +23,7 @@ public class DevViewModel extends ViewModel {
         mDevelopers = devRepo.getDevelopers();
     }
 
+    //Returns LiveData for View to observe
     public LiveData<List<Developers>> getDevelopers() {
         return mDevelopers;
     }

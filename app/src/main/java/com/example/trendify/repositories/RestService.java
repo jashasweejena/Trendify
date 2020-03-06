@@ -8,6 +8,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
+//Retrofit endpoints are defined here
 interface RestService {
     @GET("/repositories")
     Call<List<Repositories>> getProjectList();

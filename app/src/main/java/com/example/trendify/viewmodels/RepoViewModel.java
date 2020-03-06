@@ -13,6 +13,7 @@ public class RepoViewModel extends ViewModel {
     private MutableLiveData<List<Repositories>> mRespositories;
     private RepoRepository repoRepo;
 
+    //Initialize the viewmodel
     public void init() {
         if (mRespositories != null) {
             return;
@@ -23,6 +24,7 @@ public class RepoViewModel extends ViewModel {
 
     }
 
+    //Returns LiveData for View to observe
     public LiveData<List<Repositories>> getRepositories() {
         return mRespositories;
     }

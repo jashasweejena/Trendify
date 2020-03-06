@@ -2,6 +2,7 @@ package com.example.trendify.models;
 
 import com.google.gson.annotations.SerializedName;
 
+//POJO for Recyclerview and Retrofit for displaying Repositories
 public class Repositories {
 
     @SerializedName("name")

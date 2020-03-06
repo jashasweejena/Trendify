@@ -20,6 +20,7 @@ import com.example.trendify.viewmodels.DevViewModel;
 
 import java.util.List;
 
+//Fragment that handles showing Developers
 public class DevelopersFragment extends Fragment {
     private static DevelopersFragment instance;
     private RecyclerView recyclerView;
@@ -46,10 +47,12 @@ public class DevelopersFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //Get reference to ViewModel
         mDevelopersViewModel = ViewModelProviders.of(this).get(DevViewModel.class);
 
         mDevelopersViewModel.init();
 
+        //Update UI based on data from API
         mDevelopersViewModel.getDevelopers().observe(getViewLifecycleOwner(), new Observer<List<Developers>>() {
             @Override
             public void onChanged(List<Developers> developersModels) {

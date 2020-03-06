@@ -1,4 +1,4 @@
-package com.example.trendify;
+package com.example.trendify.views;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.trendify.R;
 import com.example.trendify.fragments.DevelopersFragment;
 import com.example.trendify.fragments.RepoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //set RepoFragment as default fragment
+        openFragment(new RepoFragment());
 
         BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
                 new BottomNavigationView.OnNavigationItemSelectedListener() {

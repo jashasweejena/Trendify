@@ -14,6 +14,7 @@ import com.example.trendify.models.Developers;
 
 import java.util.List;
 
+//Recyclerview adapter to display Developers
 public class DevRecyclerviewAdapter extends RecyclerView.Adapter<DevRecyclerviewAdapter.ViewHolder> {
 
     private List<Developers> mDevelopers;

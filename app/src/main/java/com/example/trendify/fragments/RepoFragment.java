@@ -20,6 +20,7 @@ import com.example.trendify.viewmodels.RepoViewModel;
 
 import java.util.List;
 
+//Fragment that handles showing Repositories
 public class RepoFragment extends Fragment {
     private static RepoFragment instance;
     private RecyclerView recyclerView;
@@ -40,6 +41,7 @@ public class RepoFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         initRepoRecyclerViewState();
 
+        //Get reference to ViewModel
         mRepositoriesViewModel = ViewModelProviders.of(this).get(RepoViewModel.class);
 
         mRepositoriesViewModel.init();
@@ -51,6 +53,7 @@ public class RepoFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //Update UI based on data from API
         mRepositoriesViewModel.getRepositories().observe(getViewLifecycleOwner(), new Observer<List<Repositories>>() {
             @Override
             public void onChanged(List<Repositories> repositoriesModels) {

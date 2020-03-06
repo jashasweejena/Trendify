@@ -2,23 +2,21 @@ package com.example.trendify.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trendify.R;
-import com.example.trendify.RepoDetails;
 import com.example.trendify.models.Repositories;
+import com.example.trendify.views.RepoDetailsActivity;
 
 import java.util.List;
 
+//Recyclerview adapter for Repositories
 public class RepoRecyclerviewAdapter extends RecyclerView.Adapter<RepoRecyclerviewAdapter.ViewHolder> {
 
     private List<Repositories> mRepositories;
@@ -56,7 +54,6 @@ public class RepoRecyclerviewAdapter extends RecyclerView.Adapter<RepoRecyclervi
         starsTextView.setText(mRepositories.get(i).getStars());
         forksTextView.setText(mRepositories.get(i).getForks());
 
-        Log.d("", "onBindViewHolder: " + i);
     }
 
 
@@ -65,7 +62,7 @@ public class RepoRecyclerviewAdapter extends RecyclerView.Adapter<RepoRecyclervi
         return mRepositories.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nameTextView;
         private TextView descriptionTextView;
         private TextView languageTextView;
@@ -108,11 +105,12 @@ public class RepoRecyclerviewAdapter extends RecyclerView.Adapter<RepoRecyclervi
             return forksTextView;
         }
 
+        //Handle click in repositories list
         @Override
         public void onClick(View view) {
 
             String avatar = mRepositories.get(getAdapterPosition()).getAvatar();
-            Intent intent = new Intent(mContext, RepoDetails.class);
+            Intent intent = new Intent(mContext, RepoDetailsActivity.class);
             intent.putExtra(mContext.getString(R.string.description), mRepositories.get(getAdapterPosition()).getDescription());
             intent.putExtra(mContext.getString(R.string.name), mRepositories.get(getAdapterPosition()).getName());
             intent.putExtra(mContext.getString(R.string.language), mRepositories.get(getAdapterPosition()).getLanguage());
