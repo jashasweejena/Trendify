@@ -3,10 +3,12 @@
 
     <item
         android:id="@+id/repositories_menu"
-        android:title="@string/repositories" />
+        android:title="@string/repositories"
+        android:icon="@drawable/ic_repository"/>
 
     <item
         android:id="@+id/developers_menu"
-        android:title="@string/developers" />
+        android:title="@string/developers"
+        android:icon="@drawable/ic_developer"/>
 
 </menu>
