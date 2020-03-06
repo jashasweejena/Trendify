@@ -1,5 +1,7 @@
 package com.example.trendify.repositories;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.trendify.models.Repositories;

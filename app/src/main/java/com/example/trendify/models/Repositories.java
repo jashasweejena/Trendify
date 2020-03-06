@@ -14,6 +14,8 @@ public class Repositories {
     private String stars;
     @SerializedName("forks")
     private String forks;
+    @SerializedName("avatar")
+    private String avatar;
 
     public Repositories(String name, String description, String language, String stars, String forks) {
         this.name = name;
@@ -24,6 +26,14 @@ public class Repositories {
     }
 
     public Repositories() {
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getName() {

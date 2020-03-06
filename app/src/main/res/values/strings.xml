@@ -2,4 +2,10 @@
     <string name="app_name">Trendify</string>
     <string name="repositories">Repositories</string>
     <string name="developers">Developers</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="language">LANGUAGE</string>
+    <string name="stars">STARS</string>
+    <string name="forks">FORKS</string>
+    <string name="avatar">AVATAR</string>
+    <string name="name">NAME</string>
 </resources>
